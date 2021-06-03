@@ -4,7 +4,7 @@
 #include <fstream>
 #include "auth.hpp"
 
-#define PRODUCT_UUID "51abb9636078defbf888d8457a7c76f85c8f114c"
+#define PRODUCT_UUID "PUT_YOUR_APP_UUID_HERE"
 
 std::uint8_t main()
 {
