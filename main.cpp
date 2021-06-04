@@ -9,16 +9,8 @@
 
 #define PRODUCT_UUID "PUT_YOUR_APP_UUID_HERE" //your UUID
 
-void killThem() { //optional
-	system(skCrypt("taskkill /f /im x64dbg"));
-	system(skCrypt("taskkill /f /im HTTPDebuggerSvc.exe"));
-	//add any other by your self
-}
-
 std::uint8_t main()
 {
-	SetConsoleTitleA(skCrypt("xen0n auth example"));
-	std::thread protection(killThem);
 	/*
 	Initialize an connection with xen0n.app's API.
 	*/
