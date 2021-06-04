@@ -4,10 +4,14 @@
 #include <iostream>
 #include <thread>
 #include <fstream>
-#include "auth.hpp"
-#include "skCrypt.h"
 
-#define PRODUCT_UUID "PUT_YOUR_APP_UUID_HERE" //your UUID
+#include <auth.hpp>
+#include <sk_crypter.hpp>
+
+/*
+Your application's UUID found under Manage -> Applications
+*/
+#define PRODUCT_UUID "PUT_YOUR_APP_UUID_HERE"
 
 std::uint8_t main()
 {
@@ -21,7 +25,7 @@ std::uint8_t main()
 	*/
 	auto get_license = ([]() {
 		std::string license;
-		printf(skCrypt("Enter license: "));
+		printf(skCrypt("Enter license > "));
 		std::getline(std::cin, license);
 		return license;
 		});
@@ -36,7 +40,7 @@ std::uint8_t main()
 	*/
 	if (response->succeeded())
 	{
-		printf(skCrypt("xen0n.app -> succesfully authenticated!\n"));
+		printf(skCrypt("xen0n.app -> %s\n"), response->message().c_str());
 		
 		/*
 		Initialize stream and fetch the array of bytes.
@@ -50,7 +54,7 @@ std::uint8_t main()
 		And we say this with the most severity! Security is a must for any paid application.
 		*/
 		std::ofstream write_file;
-		write_file.open(skCrypt("disk.png"), std::ios::out | std::ios::binary);
+		write_file.open(skCrypt("yourfile.bin"), std::ios::out | std::ios::binary);
 		write_file.write((char*)stream.data(), stream.size());
 	}
 	else
