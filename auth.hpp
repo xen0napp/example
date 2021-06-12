@@ -1,5 +1,5 @@
 /*
-*
+
 Copyright (c) 2021-2022 [xen0n.app]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -63,13 +63,14 @@ namespace xen0n
 		* Stream data from the server.
 		* @return Container who contains bytes of streamed data.
 		*/
-		std::vector<std::uint8_t> stream();
+		std::vector<uint8_t> stream();
 	};
 
 	class auth
 	{
 	private:
 		std::string uuid;
+		std::wstring endpoint = L"https://xen0n.app/api/";
 
 		/**
 		* Get's hardware identifier in xen0n.app's format.
@@ -83,6 +84,13 @@ namespace xen0n
 		*/
 		auth(std::string uuid);
 	public:
+
+		/**
+		* Update endpoint used for middleman servers.
+		* @param new_endpoint Link to your middleman server
+		* @return Current instance of auth
+		*/
+		xen0n::auth with_endpoint(std::string new_endpoint);
 
 		/**
 		* Authenticate license key with xen0n.app.
