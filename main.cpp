@@ -18,7 +18,9 @@ std::uint8_t main()
 	/*
 	Initialize an connection with xen0n.app's API.
 	*/
-	xen0n::auth auth(PRODUCT_UUID);
+	xen0n::auth auth
+		= xen0n::auth(PRODUCT_UUID)
+		  .with_endpoint("https://xen0n.app/api/");
 
 	/*
 	Lambda function for fetching the license.
